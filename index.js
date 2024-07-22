@@ -5,14 +5,14 @@ console.log(`Olá. Vou guardar para você todas as atividades que você realizou
 Vou listar algumas opções para você. Vamos começar?`);
 
 while (true) {
-console.log(`1. Adicionar atividade;
-2. Atualizar atividade;
-3. Remover atividade;
-4. Listar todas as atividades guardadas;
-5. Sair do regitro;`);
 
+    console.log(`1. Adicionar atividade.
+2. Atualizar atividade.
+3. Remover atividade.
+4. Listar todas as atividades guardadas.
+5. Sair do regitro.`);
 
-let opcao = Number(prompt());
+    let opcao = Number(prompt());
 
     switch (opcao) {
         case 1:

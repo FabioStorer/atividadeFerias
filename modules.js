@@ -9,6 +9,11 @@ function registro() {
     data.dataAtividade = prompt('Informe o dia, mês e ano que deseja guardar:');
     data.atividade = prompt('Informe o que fez nesse dia:');
     atividades.push(data);
+    data = {
+        dataAtividade: '',
+        atividade: ''
+    };
+    console.log('Escolha uma nova opção:');
 };
 
 function atualizar() {
@@ -21,7 +26,12 @@ function atualizar() {
 };
 
 function remover() {
-
+    atividades.forEach(function (atividade, index) {
+        console.log(index + 1, atividade);
+    })
+    let rm = prompt('Escolha pelo índice qual registro deseja remover:');
+    atividades.splice(rm - 1, 1);
+    console.log('Escolha uma nova opção:');
 };
 
 function listar() {
@@ -29,7 +39,7 @@ function listar() {
     atividades.forEach(function (atividade) {
         console.log(atividade);
     })
-
+    console.log('Escolha uma nova opção:');
 };
 
 module.exports = {
