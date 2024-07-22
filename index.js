@@ -3,23 +3,20 @@ const funcao = require('./modules.js');
 
 console.log(`Olá. Vou guardar para você todas as atividades que você realizou nas férias.
 Vou listar algumas opções para você. Vamos começar?`);
+
+while (true) {
 console.log(`1. Adicionar atividade;
 2. Atualizar atividade;
 3. Remover atividade;
 4. Listar todas as atividades guardadas;
 5. Sair do regitro;`);
+
+
 let opcao = Number(prompt());
 
-while (true) {
     switch (opcao) {
         case 1:
             funcao.registro();
-            console.log(`1. Adicionar atividade;
-2. Atualizar atividade;
-3. Remover atividade;
-4. Listar todas as atividades guardadas;
-5. Sair do regitro;`);
-            opcao = Number(prompt())
             break;
 
         case 2:
