@@ -10,7 +10,7 @@ while (true) {
 2. Atualizar atividade.
 3. Remover atividade.
 4. Listar todas as atividades guardadas.
-5. Sair do regitro.`);
+5. Finalizar a sessão.`);
 
     let opcao = Number(prompt());
 
@@ -36,6 +36,7 @@ while (true) {
             break;
 
         default:
+            console.log('Opção inválida.');
             break;
     };
 };
