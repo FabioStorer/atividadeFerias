@@ -1,51 +1,59 @@
 const prompt = require('prompt-sync')();
 const atividades = [];
-let data = {
-    dataAtividade: '',
-    atividade: ''
-};
 
-function modelo() {
+const sub = () => {
     let atividade = {
-        dia: '',
-        descricao: ''
+        dia: undefined,
+        descricao: []
     };
+
+    atividade.dia = prompt('Informe o dia, mês e ano que deseja guardar: ');
+    atividade.descricao.push(prompt('Informe o que fez nesse dia: '));
+    while (true) {
+        let resposta = prompt('O que mais fez nesse dia? Digite "fim" para finalizar: ');
+        if (resposta == 'fim')
+            break;
+        atividade.descricao.push(resposta);
+    }
+    return atividade;
 };
 
-function registro() {
-    data.dataAtividade = prompt('Informe o dia, mês e ano que deseja guardar:');
-    data.atividade = prompt('Informe o que fez nesse dia:');
-    atividades.push(data);
-    data = {
-        dataAtividade: '',
-        atividade: ''
-    };
+const registro = () => {
+
+    let atividade = sub();
+    atividades.push(atividade)
     console.log('Registro adicionado com sucesso.');
     console.log('Escolha uma nova opção:');
 };
 
-function atualizar() {
-    atividades.forEach(function (atividade, index) {
-        console.log(index + 1, atividade);
-    });
-    let att = prompt('Escolha pelo índice qual registro deseja atualizar:');
-    console.log(atividades[att - 1]);
+const atualizar = () => {
+    listar();
+
+    let i = prompt('Escolha pelo índice qual registro deseja atualizar: ');
+    let att = sub();
+    atividades[i--] = atividade;
+    console.log('Atualizado com sucesso.');
 };
 
-function remover() {
-    atividades.forEach(function (atividade, index) {
-        console.log(index + 1, atividade);
-    });
-    let rm = prompt('Escolha pelo índice qual registro deseja remover:');
-    atividades.splice(rm - 1, 1);
-    console.log('Registro removido com sucesso.');
-    console.log('Escolha uma nova opção:');
+const remover = () => {
+    if (!atividades) {
+        console.log('Não há nenhum registro.');
+    } else {
+        atividades.forEach(function (atividade, index) {
+            console.log(index + 1, atividade);
+        });
+        let rm = prompt('Escolha pelo índice qual registro deseja remover: ');
+        atividades.splice(rm - 1, 1);
+        console.log('Registro removido com sucesso.');
+        console.log('Escolha uma nova opção:');
+    }
 };
 
-function listar() {
+const listar = () => {
     console.log('Aqui está a lista de todas as atividades registradas:');
-    atividades.forEach(function (atividade) {
-        console.log(atividade);
+    atividades.forEach((atividade, index) => {
+        console.log(`${index + 1}. ${atividade.dia}: `);
+        atividade.descricao.forEach(descricao => console.log(`- ${descricao}`));
     });
     console.log('Escolha uma nova opção:');
 };
