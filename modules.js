@@ -31,7 +31,7 @@ const atualizar = () => {
 
     let i = prompt('Escolha pelo índice qual registro deseja atualizar: ');
     let att = sub();
-    atividades[i--] = atividade;
+    atividades[--i] = att;
     console.log('Atualizado com sucesso.');
 };
 
